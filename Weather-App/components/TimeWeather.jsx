@@ -7,6 +7,7 @@ const Contents = () => {
     <View style={styles.container}>
       <ScrollView horizontal={true}>
         <Weathers />
+        {/* <Weathers />
         <Weathers />
         <Weathers />
         <Weathers />
@@ -22,8 +23,7 @@ const Contents = () => {
         <Weathers />
         <Weathers />
         <Weathers />
-        <Weathers />
-        <Weathers />
+        <Weathers /> */}
       </ScrollView>
     </View>
   )
