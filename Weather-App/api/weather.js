@@ -1,38 +1,11 @@
 const axios = require('axios');
 const xy = require('./ax.json');
 
-const fig = {
-    TMP: "1시간 기온",
-    UUU: "풍속(동서성분)",
-    VVV: "풍속(남북성분)",
-    VEC: "풍향",
-    WSD: "풍속",
-    SKY: "하늘상태",
-    PTY: "강수형태",
-    POP: "강수확률",
-    WAV: "파고",
-    PCP: "1시간 강수량",
-    REH: "습도",
-    SNO: "1시간 신적설"
-};
-const unit = {
-    TMP: "도",
-    UUU: "m/s",
-    VVV: "m/s",
-    VEC: "deg",
-    WSD: "m/s",
-    SKY: "",
-    PTY: "",
-    POP: "%",
-    WAV: "M",
-    PCP: "mm",
-    REH: "%",
-    SNO: "cm"
-}
-
-const checkWeather =  (location) => {
+const checkWeather = async (location) => {
     let nowTime = new Date();
+    nowTime += (nowTime.getTimezoneOffset() * 60 * 1000)
     let nowHour = nowTime.getHours();
+    console.log(nowTime.getTimezoneOffset());
     
     const url = process.env.K_WEATHER_URL;
     const apikey = process.env.K_WEATHER_API_KEY;
@@ -75,7 +48,7 @@ const checkWeather =  (location) => {
     let params = Object.keys(dataParams).map(key => key + '=' + dataParams[key]).join('&');
     let result;
 
-    axios(`${url}?${params}`)
+    await axios(`${url}?${params}`)
         .then(data => {
             console.log(data.status);
             let weatherData = data.data.response.body.items.item;

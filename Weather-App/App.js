@@ -9,22 +9,17 @@ import weather from './api/weather';
 export default function App() {
   const [WeatherData, setWeatherData] = useState({});
   const dt = new Date();
-
-  // useEffect(() => {
-  //   console.log(checkWeather('', '', 'goyang'));
-  // }, []);
   
   useEffect(() => {
-    // setWeatherData({...WeatherData, weather('행신1동')});
-    // console.log(WeatherData);
-    console.log(weather('행신1동'));
+    setWeatherData(weather('행신1동'));
+    console.log('WeatherData : ', WeatherData);
   }, []);
 
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
         <Header dt={dt}/>
-        <TimeWeather />
+        <TimeWeather WeatherData={WeatherData} />
       </SafeAreaView>
     </SafeAreaProvider>
   );
