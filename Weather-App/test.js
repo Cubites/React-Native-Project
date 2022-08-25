@@ -1,4 +1,47 @@
-
-var myDate = new Date();
-console.log(myDate.getTimezoneOffset());
-console.log(Date(myDate + myDate.getTimezoneOffset() * 60000));
+{
+    "response": {
+        "header": {
+            "resultCode":"00",
+            "resultMsg":"NORMAL_SERVICE"
+        },
+        "body": {
+            "dataType":"JSON",
+            "items":{
+                "item":[
+                    {
+                        "regId":"11B00000",
+                        "rnSt3Am":0,
+                        "rnSt3Pm":30,
+                        "rnSt4Am":30,
+                        "rnSt4Pm":30,
+                        "rnSt5Am":40,
+                        "rnSt5Pm":40,
+                        "rnSt6Am":40,
+                        "rnSt6Pm":40,
+                        "rnSt7Am":10,
+                        "rnSt7Pm":20,
+                        "rnSt8":20,
+                        "rnSt9":10,
+                        "rnSt10":10,
+                        "wf3Am":"맑음",
+                        "wf3Pm":"구름많음",
+                        "wf4Am":"구름많음",
+                        "wf4Pm":"구름많음",
+                        "wf5Am":"흐림",
+                        "wf5Pm":"흐림",
+                        "wf6Am":"흐림",
+                        "wf6Pm":"흐림",
+                        "wf7Am":"맑음",
+                        "wf7Pm":"맑음",
+                        "wf8":"맑음",
+                        "wf9":"맑음",
+                        "wf10":"맑음"
+                    }
+                ]
+            },
+            "pageNo":1,
+            "numOfRows":10,
+            "totalCount":1
+        }
+    }
+}

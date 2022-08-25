@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const checkWeather = (lat, lon, city, callback) => {
+const Weather = (lat, lon, city, callback) => {
     const url = process.env.OPEN_WEATHER_URL;
     const apikey = process.env.OPEN_WEATHER_API_KEY;
     if(city == ''){

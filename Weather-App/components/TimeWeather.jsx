@@ -1,29 +1,29 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import Weathers from './Weathers';
+import TimeWeatherItem from './TimeWeatherItem';
 
-const Contents = () => {
+const TimeWeather = () => {
   return (
     <View style={styles.container}>
       <ScrollView horizontal={true}>
-        <Weathers />
-        {/* <Weathers />
-        <Weathers />
-        <Weathers />
-        <Weathers />
-        <Weathers />
-        <Weathers />
-        <Weathers />
-        <Weathers />
-        <Weathers />
-        <Weathers />
-        <Weathers />
-        <Weathers />
-        <Weathers />
-        <Weathers />
-        <Weathers />
-        <Weathers />
-        <Weathers /> */}
+        <TimeWeatherItem />
+        {/* <TimeWeatherItem />
+        <TimeWeatherItem />
+        <TimeWeatherItem />
+        <TimeWeatherItem />
+        <TimeWeatherItem />
+        <TimeWeatherItem />
+        <TimeWeatherItem />
+        <TimeWeatherItem />
+        <TimeWeatherItem />
+        <TimeWeatherItem />
+        <TimeWeatherItem />
+        <TimeWeatherItem />
+        <TimeWeatherItem />
+        <TimeWeatherItem />
+        <TimeWeatherItem />
+        <TimeWeatherItem />
+        <TimeWeatherItem /> */}
       </ScrollView>
     </View>
   )
@@ -31,11 +31,11 @@ const Contents = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 4,
+    flex: 2,
     backgroundColor: '#df99ef',
     padding: 20,
     flexDirection: 'row'
   }
 })
 
-export default Contents
+export default TimeWeather
