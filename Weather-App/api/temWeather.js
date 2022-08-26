@@ -15,7 +15,6 @@ const middleForeCast = async (location) => {
         minute: moment(nowDay.getTime()).tz('Asia/Seoul').format('mm')
     };
     let nowTime = Number(times.nowHour + times.nowMinute);
-    console.log('nowDay : ', nowDay, '/ type : ', typeof(nowDay));
 
     let dataParams = {
         ServiceKey : apikey,
@@ -32,7 +31,6 @@ const middleForeCast = async (location) => {
         dataParams.tmFc = times.year + times.month + times.day + '1800';
     }else{
         let yesterday = new Date(moment(nowDay).subtract(1, 'day'));
-        console.log('yesterday : ', yesterday, '/ type : ', typeof(yesterday));
         let beforeYear = moment(yesterday.getTime()).tz('Asia/Seoul').format('YYYY');
         let beforeMonth = moment(yesterday.getTime()).tz('Asia/Seoul').format('MM');
         let beforeDay = moment(yesterday.getTime()).tz('Asia/Seoul').format('DD');
@@ -44,13 +42,23 @@ const middleForeCast = async (location) => {
             return;
         }
     });
-    console.log('params : ', dataParams);
 
     let params = Object.keys(dataParams).map(key => key + '=' + dataParams[key]).join('&');
 
-    const weatherData = await axios(`${url}?${params}`);
-    let data = weatherData.response.items.item;
-    Object.keys(data).map(key => console.log(key + ':' + data[key]));
+    try{
+        const weatherData = await axios(`${url}?${params}`);
+        let daysData = JSON.parse(weatherData.request._response).response.body.items.item[0];
+        let result = [[], [], [], [], [], [], [], []];
+        for(let i = 0; i <= 7; i++){
+            result[i].push(daysData[`taMin${i+3}`]);
+            result[i].push(daysData[`taMax${i+3}`]);
+        }
+        return result;
+    }catch(err){
+        console.log('일간 예보 api 에러입니다.');
+        console.log(err);
+        return null;
+    }
 }
 
 module.exports = middleForeCast;

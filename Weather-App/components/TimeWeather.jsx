@@ -1,29 +1,23 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import TimeWeatherItem from './TimeWeatherItem';
 
-const TimeWeather = () => {
+const TimeWeather = ({ TimeForeCast }) => {
   return (
     <View style={styles.container}>
       <ScrollView horizontal={true}>
-        <TimeWeatherItem />
-        {/* <TimeWeatherItem />
-        <TimeWeatherItem />
-        <TimeWeatherItem />
-        <TimeWeatherItem />
-        <TimeWeatherItem />
-        <TimeWeatherItem />
-        <TimeWeatherItem />
-        <TimeWeatherItem />
-        <TimeWeatherItem />
-        <TimeWeatherItem />
-        <TimeWeatherItem />
-        <TimeWeatherItem />
-        <TimeWeatherItem />
-        <TimeWeatherItem />
-        <TimeWeatherItem />
-        <TimeWeatherItem />
-        <TimeWeatherItem /> */}
+        {
+          TimeForeCast.map(data => (
+            <TimeWeatherItem key={`${data[0]}`} data={data} />
+          ))
+        }
+        {/* {
+          TimeForeCast.length !== 0 ? 
+          TimeForeCast.forEach(data => (
+            <TimeWeatherItem key={`${data[0]}`} data={data} />
+          )) :
+          <TimeWeatherItem />
+        } */}
       </ScrollView>
     </View>
   )

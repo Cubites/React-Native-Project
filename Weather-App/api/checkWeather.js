@@ -2,17 +2,7 @@ const axios = require('axios');
 const moment = require('moment-timezone');
 const xy = require('./ax.json');
 
-const checkWeather = async (location) => {
-    // 날짜 확인
-    let nowTime = new Date();
-    let times = {
-        year: moment(nowTime.getTime()).tz('Asia/Seoul').format('YYYY'),
-        month: moment(nowTime.getTime()).tz('Asia/Seoul').format('MM'),
-        day: moment(nowTime.getTime()).tz('Asia/Seoul').format('DD'),
-        hour: moment(nowTime.getTime()).tz('Asia/Seoul').format('HH'),
-        minute: moment(nowTime.getTime()).tz('Asia/Seoul').format('mm')
-    };
-    
+const checkWeather = async (location) => {    
     const url = process.env.K_WEATHER_URL;
     const apikey = process.env.K_WEATHER_API_KEY;
 
@@ -40,13 +30,22 @@ const checkWeather = async (location) => {
             }
         });
     };
+    
+    // 날짜 확인
+    let nowTime = new Date();
+    let times = {
+        year: moment(nowTime.getTime()).tz('Asia/Seoul').format('YYYY'),
+        month: moment(nowTime.getTime()).tz('Asia/Seoul').format('MM'),
+        day: moment(nowTime.getTime()).tz('Asia/Seoul').format('DD'),
+        hour: moment(nowTime.getTime()).tz('Asia/Seoul').format('HH'),
+        minute: moment(nowTime.getTime()).tz('Asia/Seoul').format('mm')
+    };
 
     // 요청할 날씨예보 데이터 시간대 지정
     let apiTime = '';
     let timesHourMinute = times.hour + times.minute;
     if(Number(timesHourMinute) < 220){
         let yesterday = new Date(moment(nowTime).subtract(1, 'day'));
-        console.log('yesterday : ', yesterday);
         times.year = moment(yesterday.getTime()).tz('Asia/Seoul').format('YYYY');
         times.month = moment(yesterday.getTime()).tz('Asia/Seoul').format('MM');
         times.day = moment(yesterday.getTime()).tz('Asia/Seoul').format('DD');
@@ -79,23 +78,21 @@ const checkWeather = async (location) => {
     }
 
     let params = Object.keys(dataParams).map(key => key + '=' + dataParams[key]).join('&');
-
+    
     try{
         let apiData = await axios(`${url}?${params}`);
-        console.log('data.status : ', apiData.status);
         let weatherData = apiData.data.response.body.items.item;
-        // console.log('weatherData : ', weatherData);
-        // weatherData.forEach(d => console.log(d.category, ' : ', d.fcstValue));
+
         let weatherDetail = [[], [], [], [], [], [], [], [], [], []];
         // baseTime : 예보 시간
         // TMP : 기온 , SKY : 하늘상태 , PCP : 강수확률 , REH : 습도 , SNO : 적설량
+        let weatherDetailIndex = -1;
         weatherData.forEach((d, index) => {
             let dayIndex = parseInt(index / 12);
-            let dayDivider = index % 12;
-            if(dayDivider === 0){
-                weatherDetail[dayIndex].push(d.fcstTime);
+            if(d.category === 'TMP'){
+                weatherDetailIndex += 1;
+                weatherDetail[weatherDetailIndex].push(d.fcstTime);
             }
-            console.log('d : ', d, 'dayIndex : ', dayIndex);
             weatherDetail[dayIndex].push(d.fcstValue);
         });
         return weatherDetail;

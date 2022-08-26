@@ -2,13 +2,16 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-const DayWeatherItem = () => {
+const DayWeatherItem = ({ data }) => {
   return (
     <View style={styles.container}>
       <View>
         <Ionicons name="sunny" size={48} color='orange' />
       </View>
-      <Text>시간대별 날씨 예보 나오는 칸</Text>
+      <View>
+        <Text>{data[1] + " 도"}</Text>
+        <Text>{data[0] + " 도"}</Text>
+      </View>
     </View>
   )
 }

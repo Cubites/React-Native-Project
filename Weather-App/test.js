@@ -1,47 +1,14 @@
-{
-    "response": {
-        "header": {
-            "resultCode":"00",
-            "resultMsg":"NORMAL_SERVICE"
-        },
-        "body": {
-            "dataType":"JSON",
-            "items":{
-                "item":[
-                    {
-                        "regId":"11B00000",
-                        "rnSt3Am":0,
-                        "rnSt3Pm":30,
-                        "rnSt4Am":30,
-                        "rnSt4Pm":30,
-                        "rnSt5Am":40,
-                        "rnSt5Pm":40,
-                        "rnSt6Am":40,
-                        "rnSt6Pm":40,
-                        "rnSt7Am":10,
-                        "rnSt7Pm":20,
-                        "rnSt8":20,
-                        "rnSt9":10,
-                        "rnSt10":10,
-                        "wf3Am":"맑음",
-                        "wf3Pm":"구름많음",
-                        "wf4Am":"구름많음",
-                        "wf4Pm":"구름많음",
-                        "wf5Am":"흐림",
-                        "wf5Pm":"흐림",
-                        "wf6Am":"흐림",
-                        "wf6Pm":"흐림",
-                        "wf7Am":"맑음",
-                        "wf7Pm":"맑음",
-                        "wf8":"맑음",
-                        "wf9":"맑음",
-                        "wf10":"맑음"
-                    }
-                ]
-            },
-            "pageNo":1,
-            "numOfRows":10,
-            "totalCount":1
-        }
-    }
+{ 
+    "regId": "11B10101", 
+    "taMax10": 27, 
+    "taMax10High": 1, 
+    "taMax10Low": 0, 
+    "taMax3": 28, 
+    "taMax3High": 1, 
+    "taMax3Low": 1, 
+    "taMax4": 27, 
+    "taMax4High": 1, 
+    "taMax4Low": 1, 
+    "taMax5": 25, 
+    "taMax5High": 1, "taMax5Low": 2, "taMax6": 26, "taMax6High": 1, "taMax6Low": 2, "taMax7": 28, "taMax7High": 1, "taMax7Low": 1, "taMax8": 28, "taMax8High": 1, "taMax8Low": 0, "taMax9": 28, "taMax9High": 1, "taMax9Low": 0, "taMin10": 20, "taMin10High": 1, "taMin10Low": 0, "taMin3": 18, "taMin3High": 2, "taMin3Low": 2, "taMin4": 20, "taMin4High": 0, "taMin4Low": 1, "taMin5": 20, "taMin5High": 1, "taMin5Low": 1, "taMin6": 20, "taMin6High": 1, "taMin6Low": 2, "taMin7": 19, "taMin7High": 2, "taMin7Low": 1, "taMin8": 20, "taMin8High": 1, "taMin8Low": 0, "taMin9": 20, "taMin9High": 2, "taMin9Low": 0 
 }
