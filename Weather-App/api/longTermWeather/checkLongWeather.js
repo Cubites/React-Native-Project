@@ -5,7 +5,8 @@ const regionCode = require('./regionCode.json');
 const url = process.env.K_MIDDLE_WEATHER_URL;
 const apikey = process.env.K_WEATHER_API_KEY;
 
-const middleForeCast = async (location) => {
+const checkLongWeather = async (location) => {
+    console.log('2. 장기 예보');
     let nowDay = new Date();
     let times = {
         year: moment(nowDay.getTime()).tz('Asia/Seoul').format('YYYY'),
@@ -53,6 +54,7 @@ const middleForeCast = async (location) => {
             result[i].push(daysData[`taMin${i+3}`]);
             result[i].push(daysData[`taMax${i+3}`]);
         }
+        console.log('2. 장기 예보 데이터 조회 완료');
         return result;
     }catch(err){
         console.log('일간 예보 api 에러입니다.');
@@ -61,4 +63,4 @@ const middleForeCast = async (location) => {
     }
 }
 
-module.exports = middleForeCast;
+module.exports = checkLongWeather;

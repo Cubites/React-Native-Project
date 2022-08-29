@@ -1,14 +1,35 @@
-{ 
-    "regId": "11B10101", 
-    "taMax10": 27, 
-    "taMax10High": 1, 
-    "taMax10Low": 0, 
-    "taMax3": 28, 
-    "taMax3High": 1, 
-    "taMax3Low": 1, 
-    "taMax4": 27, 
-    "taMax4High": 1, 
-    "taMax4Low": 1, 
-    "taMax5": 25, 
-    "taMax5High": 1, "taMax5Low": 2, "taMax6": 26, "taMax6High": 1, "taMax6Low": 2, "taMax7": 28, "taMax7High": 1, "taMax7Low": 1, "taMax8": 28, "taMax8High": 1, "taMax8Low": 0, "taMax9": 28, "taMax9High": 1, "taMax9Low": 0, "taMin10": 20, "taMin10High": 1, "taMin10Low": 0, "taMin3": 18, "taMin3High": 2, "taMin3Low": 2, "taMin4": 20, "taMin4High": 0, "taMin4Low": 1, "taMin5": 20, "taMin5High": 1, "taMin5Low": 1, "taMin6": 20, "taMin6High": 1, "taMin6Low": 2, "taMin7": 19, "taMin7High": 2, "taMin7Low": 1, "taMin8": 20, "taMin8High": 1, "taMin8Low": 0, "taMin9": 20, "taMin9High": 2, "taMin9Low": 0 
-}
+const moment = require('moment-timezone');
+
+const d = [
+    ["1500", "23", "-0.7", "2", "158", "2.2", "4", "0", "30", "0", "강수없음", "65", "적설없음"], 
+    ["1600", "23", "-0.3", "1.4", "164", "1.5", "4", "0", "30", "0", "강수없음", "65", "적설없음"], 
+    ["1700", "22", "-0.5", "0.3", "117", "0.7", "4", "0", "30", "0", "강수없음", "65", "적설없음"], 
+    ["1800", "22", "-0.8", "0.6", "124", "1.1", "4", "0", "30", "0", "강수없음", "70", "적설없음"], 
+    ["1900", "21", "-0.8", "-0.1", "84", "0.9", "4", "0", "30", "0", "강수없음", "75", "적설없음"], 
+    ["2000", "21", "-1.3", "-0.3", "78", "1.4", "4", "0", "30", "0", "강수없음", "75", "적설없음"], 
+    ["2100", "21", "-1.2", "-0.7", "62", "1.5", "4", "0", "30", "0", "강수없음", "75", "적설없음"], 
+    ["2200", "20", "-0.9", "-0.6", "59", "1.2", "4", "0", "30", "0", "강수없음", "80", "적설없음"], 
+    ["2300", "20", "-0.8", "-0.6", "56", "1.1", "4", "0", "30", "0", "강수없음", "80", "적설없음"], 
+    ["0000", "20", "-0.7", "-1.2", "34", "1.4", "4", "0", "30", "0", "강수없음", "75", "적설없음"]
+];
+
+let nowTime = new Date();
+let times = {
+    year: moment(nowTime.getTime()).tz('Asia/Seoul').format('YYYY'),
+    month: moment(nowTime.getTime()).tz('Asia/Seoul').format('MM'),
+    day: moment(nowTime.getTime()).tz('Asia/Seoul').format('DD'),
+    hour: moment(nowTime.getTime()).tz('Asia/Seoul').format('HH'),
+    minute: moment(nowTime.getTime()).tz('Asia/Seoul').format('mm')
+};
+let dayNum = Number(times.year + times.month + times.day + times.hour + "00");
+console.log('dayNum : ', dayNum, ' / type : ', typeof(dayNum));
+d.filter(data => Number(data[0]) >= dayNum);
+// d.map(data => {
+//     console.log('data[0] : ', Number(data[0]), ' / type : ', typeof(Number(data[0])));
+//     {
+//         Number(data[0]) <= dayNum ?
+//         console.log('이미 지나간 시간') :
+//         console.log('아직 지나지 않은 시간')
+//     }
+// })
+console.log(d);

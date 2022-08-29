@@ -1,8 +1,9 @@
 const axios = require('axios');
 const moment = require('moment-timezone');
-const xy = require('./ax.json');
+const xy = require('./axialValue.json');
 
-const checkWeather = async (location) => {    
+const checkShortWeather = async (location) => {
+    console.log('1. 단기 예보');
     const url = process.env.K_WEATHER_URL;
     const apikey = process.env.K_WEATHER_API_KEY;
 
@@ -86,15 +87,28 @@ const checkWeather = async (location) => {
         let weatherDetail = [[], [], [], [], [], [], [], [], [], []];
         // baseTime : 예보 시간
         // TMP : 기온 , SKY : 하늘상태 , PCP : 강수확률 , REH : 습도 , SNO : 적설량
-        let weatherDetailIndex = -1;
-        weatherData.forEach((d, index) => {
-            let dayIndex = parseInt(index / 12);
+        let useValues = ["TMP", "UUU", "VVV", "VEC", "WSD", "SKY", "PTY", "POP", "WAV", "PCP", "REH", "SNO"];
+        let dayIndex = -1;
+        weatherData.forEach((d) => {
             if(d.category === 'TMP'){
-                weatherDetailIndex += 1;
-                weatherDetail[weatherDetailIndex].push(d.fcstTime);
+                dayIndex += 1;
+                weatherDetail[dayIndex].push(d.fcstTime);
+                weatherDetail[dayIndex].push(d.fcstValue);
+            }else if(useValues.includes(d.category)){
+                weatherDetail[dayIndex].push(d.fcstValue);
             }
-            weatherDetail[dayIndex].push(d.fcstValue);
         });
+        console.log('Number(weatherDetail[0][0]) : ', Number(weatherDetail[0][0]));
+        console.log(`Number(times.hour + '00') : `, Number(times.hour + '00'));
+        for(let i; i < weatherDetail.length; i++){
+            if(Number(weatherDetail[0][0]) < Number(times.hour + '00')){
+                weatherDetail.shift();
+                console.log(weatherDetail);
+            }else{
+                break;
+            }
+        }
+        console.log('1. 단기 예보 데이터 조회 완료');
         return weatherDetail;
     }catch(e){
         console.log('api 에러 : ', e);
@@ -102,4 +116,4 @@ const checkWeather = async (location) => {
     }
 }
 
-module.exports = checkWeather;
+module.exports = checkShortWeather;

@@ -17,13 +17,15 @@ import { Ionicons } from '@expo/vector-icons';
   11. "REH": "습도",
   12. "SNO": "1시간 신적설"
 */
-const Weathers = ({ data }) => {
+
+const ShortWeatherItem = ({ data }) => {
   return (
     <View style={styles.container}>
       <View>
         <Ionicons name="sunny" size={48} color='orange' />
       </View>
       <View>
+        <Text>{data[0].slice(0,2) + ' 시'}</Text>
         <Text>{data[1] + " 도"}</Text>
         <Text>{data[8] + " %"}</Text>
         <Text>{data[11] + " %"}</Text>
@@ -45,4 +47,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Weathers
+export default ShortWeatherItem

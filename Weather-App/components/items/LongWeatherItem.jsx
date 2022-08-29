@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-const DayWeatherItem = ({ data }) => {
+const LongWeatherItem = ({ data }) => {
   return (
     <View style={styles.container}>
       <View>
@@ -29,4 +29,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default DayWeatherItem
+export default LongWeatherItem
