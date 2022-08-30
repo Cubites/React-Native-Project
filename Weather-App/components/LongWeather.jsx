@@ -3,13 +3,12 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import LongWeatherItem from './items/LongWeatherItem';
 
 const LongWeather = ({ LongWeatherForeCast }) => {
-  // console.log(LongWeatherForeCast !== [] ? ('LongWeatherForeCast : ', LongWeatherForeCast) : '');
   return (
     <View style={styles.container}>
       <ScrollView horizontal={true}>
         {
           LongWeatherForeCast.map((data, index) => (
-            <LongWeatherItem key={`day${index}`} data={data} />
+            <LongWeatherItem key={`day${index}`} data={data} dayAfter={index + 3} />
           ))
         }
       </ScrollView>

@@ -64,7 +64,7 @@ export default function App() {
           <Header Clock={Clock} NowWeather={NowWeather} />
           <ShortWeather ShortWeatherForeCast={ShortWeatherForeCast} />
           <LongWeather LongWeatherForeCast={LongWeatherForeCast} />
-          <Dust ShortWeatherForeCast={ShortWeatherForeCast} />
+          {/* <Dust ShortWeatherForeCast={ShortWeatherForeCast} /> */}
         </ScrollView>
       </SafeAreaView>
     </SafeAreaProvider>

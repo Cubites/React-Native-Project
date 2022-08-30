@@ -20,36 +20,40 @@ import { Ionicons, Fontisto } from '@expo/vector-icons';
 */
 
 const Header = ({Clock, NowWeather}) => {
-  const { top } = useSafeAreaInsets();
-  console.log(NowWeather[6]);
+  console.log('NowWeather : ', NowWeather[6], ' / type : ', typeof(NowWeather[6]));
   let weatherImage = '';
   switch(NowWeather[6]){
-    case 0:
-      weatherImage = '../assets/icon/sunny.png';
+    case '0':
+      weatherImage = require('../assets/icon/sunny.png');
       break;
-    case 1:
-      weatherImage = '../assets/icon/rain.png';
+    case '1':
+      weatherImage = require('../assets/icon/rain.png');
       break;
-    case 2:
-      weatherImage = '../assets/icon/sleet.png';
+    case '2':
+      weatherImage = require('../assets/icon/sleet.png');
       break;
-    case 3:
-      weatherImage = '../assets/icon/snow.png';
+    case '3':
+      weatherImage = require('../assets/icon/snow.png');
       break;
-    case 4:
-      weatherImage = '../assets/icon/sunny-rain.png';
+    case '4':
+      weatherImage = require('../assets/icon/sunny-rain.png');
       break;
     default:
-      weatherImage = '../assets/icon/error.png';
+      weatherImage = require('../assets/icon/error.png');
       break;
   }
   return (
     <View style={styles.container}>
-      <View>
-        <Image style={styles.icon} source={require('../assets/icon/error.png')} />
-      </View>
       <View style={styles.time}>
         <Text>{Clock}</Text>
+      </View>
+      <View style={{marginVertical: 10}}>
+        <Image style={styles.icon} source={weatherImage} />
+      </View>
+      <View style={{alignItems: 'center'}}>
+        <Text style={{fontSize: 30}}>
+          {NowWeather[1]} 도
+        </Text>
       </View>
     </View>
   )
@@ -67,7 +71,8 @@ const styles = StyleSheet.create({
     height: 70,
   },
   time: {
-    marginTop: 20
+    marginTop: 20,
+    alignItems: 'center',
   }
 });
 
