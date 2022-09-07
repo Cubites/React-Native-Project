@@ -10,16 +10,19 @@ import LongWeather from './components/LongWeather';
 import Header from './components/Header';
 import Dust from './components/Dust';
 
+const xy = require('./api/shortTermWeather/axialValue.json');
 
 export default function App() {
   const [ShortWeatherForeCast, setShortWeatherForeCast] = useState([]);
   const [LongWeatherForeCast, setLongWeatherForeCast] = useState([]);
+  const [ShortWeatherLoc, setShortWeatherLoc] = useState("행신1동");
+  const [LongWeatherLoc, setLongWeatherLoc] = useState("고양");
   const [NowWeather, setNowWeather] = useState([]);
   const [Clock, setClock] = useState('');
   
   useEffect(() => {
     console.log('----------------시작----------------');
-    checkShortWeather('행신1동')
+    checkShortWeather(ShortWeatherLoc)
       .then(d => {
         // console.log('-------------------10시간 일기 예보 입니다.-------------------');
         // d.forEach(dd => console.log(dd));
@@ -34,7 +37,10 @@ export default function App() {
         setClock(`${times.year}년 ${times.month}월 ${times.day}일 ${times.hour}시 ${times.minute}분`);
         setShortWeatherForeCast(d);
         for(data of d){
+          console.log('setNowWeather : ', data[0]);
+          console.log('times.hour :', times.hour);
           if(data[0] === (times.hour + '00')){
+            console.log('setNowWeatherIf : ', data[0]);
             setNowWeather([...data]);
             break;
           }
@@ -45,6 +51,31 @@ export default function App() {
         console.log(err);
       });
 
+    if(LongWeatherLoc == ''){
+      xy.forEach((data) => {
+        if(data.dong === ShortWeatherLoc){
+          setLongWeatherLoc(data.gu.slice(0, data.gu.length() - 1));
+          return;
+        }
+      });
+    }
+    if(LongWeatherLoc == ''){
+      xy.forEach((data) => {
+        if(data.gu === ShortWeatherLoc){
+          setLongWeatherLoc(data.gu.slice(0, data.gu.length() - 1));
+          return;
+        }
+      });
+    }
+    if(LongWeatherLoc == ''){
+      xy.forEach((data) => {
+        if(data.si === ShortWeatherLoc){
+          setLongWeatherLoc(data.gu.slice(0, data.gu.length() - 1));
+          return;
+        }
+      });
+    }
+    console.log("LongWeatherLoc : ", LongWeatherLoc);
     checkLongWeather('서울')
       .then(d => {
         // console.log('-------------------10일간의 일기 예보 입니다.-------------------');

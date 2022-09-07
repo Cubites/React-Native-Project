@@ -83,6 +83,7 @@ const checkShortWeather = async (location) => {
     try{
         let apiData = await axios(`${url}?${params}`);
         let weatherData = apiData.data.response.body.items.item;
+        console.log('weatherDetail : ', weatherData);
 
         let weatherDetail = [[], [], [], [], [], [], [], [], [], []];
         // baseTime : 예보 시간
@@ -94,6 +95,8 @@ const checkShortWeather = async (location) => {
                 dayIndex += 1;
                 weatherDetail[dayIndex].push(d.fcstTime);
                 weatherDetail[dayIndex].push(d.fcstValue);
+                console.log('dayIndex :', dayIndex);
+                console.log(weatherDetail[dayIndex]);
             }else if(useValues.includes(d.category)){
                 weatherDetail[dayIndex].push(d.fcstValue);
             }
@@ -103,12 +106,13 @@ const checkShortWeather = async (location) => {
         for(let i; i < weatherDetail.length; i++){
             if(Number(weatherDetail[0][0]) < Number(times.hour + '00')){
                 weatherDetail.shift();
-                console.log(weatherDetail);
+                // console.log(weatherDetail);
             }else{
                 break;
             }
         }
         console.log('1. 단기 예보 데이터 조회 완료');
+        console.log('weatherDetail : ', weatherDetail);
         return weatherDetail;
     }catch(e){
         console.log('api 에러 : ', e);

@@ -20,9 +20,10 @@ import { Ionicons, Fontisto } from '@expo/vector-icons';
 */
 
 const Header = ({Clock, NowWeather}) => {
-  console.log('NowWeather : ', NowWeather[6], ' / type : ', typeof(NowWeather[6]));
+  console.log('NowWeather : ', NowWeather);
+  console.log('NowWeather : ', NowWeather[7], ' / type : ', typeof(NowWeather[7]));
   let weatherImage = '';
-  switch(NowWeather[6]){
+  switch(NowWeather[7]){
     case '0':
       weatherImage = require('../assets/icon/sunny.png');
       break;

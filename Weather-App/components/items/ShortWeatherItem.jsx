@@ -20,7 +20,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 const ShortWeatherItem = ({ data }) => {
   let weatherImage = '';
-  switch(data[6]){
+  switch(data[7]){
     case '0':
       weatherImage = require('../../assets/icon/sunny.png');
       break;
