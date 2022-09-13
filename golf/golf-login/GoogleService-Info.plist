@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>459503699415-27thnv8nrs482sd1r4gtiflkcjhso4k7.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.459503699415-27thnv8nrs482sd1r4gtiflkcjhso4k7</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCxg9LOW1xrcYt2dj4eFp0Dpoj1IWk926g</string>
+	<key>GCM_SENDER_ID</key>
+	<string>459503699415</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.cubite.golfapp</string>
+	<key>PROJECT_ID</key>
+	<string>golf-app-afb06</string>
+	<key>STORAGE_BUCKET</key>
+	<string>golf-app-afb06.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:459503699415:ios:0cd42d03eb98b490313792</string>
+	<key>DATABASE_URL</key>
+	<string>https://golf-app-afb06-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+</dict>
+</plist>

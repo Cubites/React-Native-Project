@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "459503699415",
+    "firebase_url": "https://golf-app-afb06-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "golf-app-afb06",
+    "storage_bucket": "golf-app-afb06.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459503699415:android:adc02ead3fdc0f07313792",
+        "android_client_info": {
+          "package_name": "com.cubite.golfapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459503699415-k3ka6ldd6iue6rmmgga33mfcocuvh8ie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBR7EaXO0W_8-uKF-vhLC4m69MXb2auwvY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459503699415-k3ka6ldd6iue6rmmgga33mfcocuvh8ie.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "459503699415-4tba6o3aql5fqa2ab3mccj63i60v751n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.golftest.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
