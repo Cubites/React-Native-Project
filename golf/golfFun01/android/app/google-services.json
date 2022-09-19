@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "148818357969",
+    "project_id": "golf-acb48",
+    "storage_bucket": "golf-acb48.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148818357969:android:fe22be10ed67ec11b3dff0",
+        "android_client_info": {
+          "package_name": "com.golffun01"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148818357969-qo40d4jcvvbu9q7je3sf99182ro2g1tq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8DPfKjYsNIMZfjBl3ODFwemH7QEkqiWU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148818357969-qo40d4jcvvbu9q7je3sf99182ro2g1tq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
