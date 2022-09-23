@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity, Alert } from 'react-native';
 import React, { useContext, useState } from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -6,11 +6,34 @@ import { AuthContext } from '../context/AuthProvider';
 import FormButton from '../component/FormButton';
 import FormInput from '../component/FormInput';
 import SocialButton from '../component/SocialButton';
+import { validateEmail, removeWhitespace } from '../utils/Validate';
+
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const { signin } = useContext(AuthContext);
+
+  const handleLogin = () => {
+    if(email){
+      const changeEmail  = removeWhitespace(email);
+      console.log(changeEmail);
+      console.log(validateEmail(changeEmail));
+      if(validateEmail(changeEmail)){
+        Alert.alert('이메일 형식으로 입력하세요.');
+        return; 
+      }
+    }else{
+      Alert.alert('이메일을 입력하세요.');
+      return;
+    }
+
+    if(!password){
+      Alert.alert('비밀번호를 입력하세요.');
+      return;
+    }
+    signin(email, password);
+  }
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -41,7 +64,7 @@ const LoginScreen = ({ navigation }) => {
       <FormButton
         buttonTitle=" 로 그 인 "
         backgroundColor='#0c751e'
-        onPress={() => signin(email, password)}
+        onPress={handleLogin}
       />
 
       <TouchableOpacity style={styles.forgotButton} onPress={() => {}}>

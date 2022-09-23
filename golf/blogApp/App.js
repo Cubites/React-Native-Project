@@ -24,6 +24,7 @@ const data = [
 
 const width = Dimensions.get('window').width - 20;
 let currentSlideIndex = 0;
+let intervalId;
 
 export const App = () => {
   const [DataToRender, setDataToRender] = useState([]);
@@ -43,8 +44,18 @@ export const App = () => {
   const flatList = useRef();
 
   const handleScrollTo = (index) => {
-
+    flatList.current.scrollToIndex({ animated: false, index });
   }
+
+  const pauseSlider = () => {
+    clearInterval(intervalId);
+  }
+
+  useEffect(() => {
+    if(DataToRender.length && flatList.current){
+      startSlider();
+    }
+  }, [DataToRender.length]);
 
   useEffect(() => {
     const newData = [[...data].pop(), ...data, [...data].shift()];
@@ -86,6 +97,7 @@ export const App = () => {
         </View>
       </View>
       <FlatList
+        ref={flatList}
         data={DataToRender}
         keyExtractor={(item, index) => item.id + index}
         horizontal
